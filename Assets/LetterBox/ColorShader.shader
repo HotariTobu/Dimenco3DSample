@@ -66,7 +66,8 @@ Shader "Dimenco/Color"
                 d = LinearEyeDepth(d);
                 d = tex2D(_DepthTex, i.uv).x;
 
-                // checker = (.uv.y - (1 - _TopPad)i) * (i.uv.y - _BottomPad) * (i.depth - _PadTh);
+								// float depthDiff = i.depth - _PadTh;
+                // checker = -(i.uv.y - (1 - _TopPad)) * (i.uv.y - _BottomPad) * (abs(depthDiff) - depthDiff);
                 // clip(checker);
 
                 col = (i.uv.y < (1 - _TopPad) &&
